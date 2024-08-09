@@ -1,0 +1,30 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    background-color: lightcoral;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    height: 6rem;
+    width: 100%;
+    background-color: lightslategray;
+}
+
+footer,
+#line {
+    width: 100%;
+    background-color: black;
+    height: 1rem;
+}
+
+nav {
+    width: 10rem;
+    height: 100%;
+    background-color: darkgray;
+}
