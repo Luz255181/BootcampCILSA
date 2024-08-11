@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -9,34 +9,41 @@
     <title>Form</title>
 </head>
 
-<body class="cuerpo">
-    <h1>Datos Personales</h1>
-    <form class="content">
+<body id="cuerpo" class="cuerpo">
+    <h1 id="titulo" class="titulo">Datos Personales</h1>
+    <form id="formulario" class="content" onsubmit="mostrarNotificacion(event)">
         <div class="data">
             <label for="name">Nombre:</label>
-            <input type="text" class="campo" required autofocus></input>
+            <input type="text" id="name" class="campo" required autofocus>
         </div>
         <div class="data">
             <label for="lastname">Apellido:</label>
-            <input type="text" class="campo" required></input>
+            <input type="text" id="lastname" class="campo" required>
         </div>
         <div class="data">
             <label for="email">Email:</label>
-            <input type="email" class="campo" required></input>
+            <input type="email" id="email" class="campo" required>
         </div>
         <div class="data">
-            <label for="brithdate">Fecha de Nacimiento:</label>
-            <input type="date" class="campo" required>
+            <label for="birthdate">Fecha de Nacimiento:</label>
+            <input type="date" id="birthdate" class="campo" required>
         </div>
         <div class="data">
-            <label for="country">Pais de Residencia:</label>
-            <input type="text" class="campo" required></input>
+            <label for="country">País de Residencia:</label>
+            <input type="text" id="country" class="campo" required>
         </div>
-        <button type="submit" class="submit">Enviar</button>
+        <button type="submit" id="submit" class="submit claro">Enviar</button>
     </form>
-    <button class="mode">Alto Contraste</button>
-    <button class="mode">Modo Claro</button>
-    <footer>María Luz Cabral</footer>
+    <button id="claro" class="mode claro" onclick="modoContraste()" aria-label="Activar alto contraste">Alto
+        Contraste</button>
+    <button id="contraste" class="mode modedisable" onclick="modoClaro()" aria-label="Activar modo claro">Modo
+        Claro</button>
+    <div id="notification" class="oculto notification">
+        Datos Enviados
+    </div>
+
+    <footer id="footer" class="footerclaro">María Luz Cabral</footer>
+    <script src="actions.js"></script>
 </body>
 
 </html>
