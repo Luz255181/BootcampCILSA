@@ -53,6 +53,8 @@ function mostrarNotificacion(event) {
     const birthdate = document.getElementById('birthdate').value;
     const country = document.getElementById('country').value;
 
+    let error = validarCampo(name) || validarCampo(lastname) || validarCampo(country);
+
     if (modoclaro) {
         notificacion.classList.remove('oculto');
         notificacion.classList.add('visibleclaro');
@@ -61,11 +63,27 @@ function mostrarNotificacion(event) {
         notificacion.classList.add('visibleoscuro');
     }
 
-    notificacion.innerText = `Datos Enviados: \n Nombre: ${name}\n Apellido: ${lastname} \n Email: ${email} \n Fecha de Nacimiento: ${birthdate} \n País: ${country}`;
+    if (!error) {
+        notificacion.innerText = `Datos Enviados: \n Nombre: ${name}\n Apellido: ${lastname} \n Email: ${email} \n Fecha de Nacimiento: ${birthdate} \n País: ${country}`;
+        document.getElementById('formulario').reset();
+    } else {
+        notificacion.innerText = `Error en Nombre, Apellido o País.`;
+    }
 
     setTimeout(() => {
         notificacion.classList.remove(modoclaro ? 'visibleclaro' : 'visibleoscuro');
         notificacion.classList.add('oculto');
-        document.getElementById('formulario').reset();
     }, 3000);
+}
+
+function validarCampo(data) {
+    let error = false;
+    if (/^\s*$/.test(data)) {
+        error = true;
+    } else {
+        if (!(/^[a-zA-Z]+$/.test(data))) {
+            error = true;
+        }
+    }
+    return error;
 }
