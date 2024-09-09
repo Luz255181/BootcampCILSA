@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Form</title>
+</head>
+
+<body id="cuerpo" class="cuerpo">
+    <h1 id="titulo" class="titulo">Datos Personales</h1>
+    <form id="formulario" class="content" onsubmit="mostrarNotificacion(event)">
+        <div class="data">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" class="campo" required autofocus>
+        </div>
+        <div class="data">
+            <label for="lastname">Apellido:</label>
+            <input type="text" id="lastname" class="campo" required>
+        </div>
+        <div class="data">
+            <label for="email">Email:</label>
+            <input type="email" id="email" class="campo" required>
+        </div>
+        <div class="data">
+            <label for="birthdate">Fecha de Nacimiento:</label>
+            <input type="date" id="birthdate" class="campo" required>
+        </div>
+        <div class="data">
+            <label for="country">País de Residencia:</label>
+            <input type="text" id="country" class="campo" required>
+        </div>
+        <button type="submit" id="submit" class="submit claro">Enviar</button>
+    </form>
+    <button id="claro" class="mode claro" onclick="modoContraste()" aria-label="Activar alto contraste">Alto
+        Contraste</button>
+    <button id="contraste" class="mode modedisable" onclick="modoClaro()" aria-label="Activar modo claro">Modo
+        Claro</button>
+    <div id="notification" class="oculto notification">
+        Datos Enviados
+    </div>
+
+    <footer id="footer" class="footerclaro">María Luz Cabral</footer>
+    <script src="actions.js"></script>
+</body>
+
+</html>
