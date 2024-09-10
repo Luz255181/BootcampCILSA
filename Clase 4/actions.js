@@ -74,7 +74,7 @@ function mostrarNotificacion(event) {
     setTimeout(() => {
         notificacion.classList.remove(modoclaro ? 'visibleclaro' : 'visibleoscuro');
         notificacion.classList.add('oculto');
-    }, 3000);
+    }, 10000);
 }
 
 function validarCampo(data) {
