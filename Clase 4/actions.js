@@ -68,7 +68,7 @@ function mostrarNotificacion(event) {
         notificacion.innerText = `Datos Enviados: \n Nombre: ${name}\n Apellido: ${lastname} \n Email: ${email} \n Fecha de Nacimiento: ${birthdate} \n País: ${country}`;
         document.getElementById('formulario').reset();
     } else {
-        notificacion.innerText = `Error en Nombre, Apellido, Email o País.`;
+        notificacion.innerText = `Error en Nombre, Apellido, Email, Fecha de Nacimiento o País.`;
     }
 
     setTimeout(() => {
