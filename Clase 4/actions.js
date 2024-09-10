@@ -7,6 +7,7 @@ const submit = document.getElementById('submit');
 const footer = document.getElementById('footer');
 const notificacion = document.getElementById('notification');
 let modoclaro = true;
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function modoClaro() {
     claro.classList.add('claro');
@@ -53,7 +54,7 @@ function mostrarNotificacion(event) {
     const birthdate = document.getElementById('birthdate').value;
     const country = document.getElementById('country').value;
 
-    let error = validarCampo(name) || validarCampo(lastname) || validarCampo(country);
+    let error = validarCampo(name) || validarCampo(lastname) || validarCampo(country) || validarEmail(email) || validarFecha(birthdate);
 
     if (modoclaro) {
         notificacion.classList.remove('oculto');
@@ -67,7 +68,7 @@ function mostrarNotificacion(event) {
         notificacion.innerText = `Datos Enviados: \n Nombre: ${name}\n Apellido: ${lastname} \n Email: ${email} \n Fecha de Nacimiento: ${birthdate} \n País: ${country}`;
         document.getElementById('formulario').reset();
     } else {
-        notificacion.innerText = `Error en Nombre, Apellido o País.`;
+        notificacion.innerText = `Error en Nombre, Apellido, Email o País.`;
     }
 
     setTimeout(() => {
@@ -78,12 +79,44 @@ function mostrarNotificacion(event) {
 
 function validarCampo(data) {
     let error = false;
-    if (/^\s*$/.test(data)) {
-        error = true;
-    } else {
-        if (!(/^[a-zA-Z]+$/.test(data))) {
+    if (data) {
+        if (/^\s*$/.test(data)) {
             error = true;
+        } else {
+            if (!(/^[a-zA-Z]+$/.test(data))) {
+                error = true;
+            }
         }
+    } else {
+        error = true;
     }
     return error;
 }
+
+function validarEmail(email) {
+    return !emailRegex.test(email);
+}
+
+function validarFecha(fecha) {
+    let error = false;
+
+    const fechaRegex = /^\d{4}-\d{2}-\d{2}$/;
+    if (!fechaRegex.test(fecha)) {
+        error = true;
+    }
+
+    const fechaObjeto = new Date(fecha);
+
+    if (isNaN(fechaObjeto.getTime())) {
+        error = true;
+    }
+
+    const [year, month, day] = fecha.split("-");
+    if (fechaObjeto.getUTCFullYear() != year || (fechaObjeto.getUTCMonth() + 1) != month || fechaObjeto.getUTCDate() != day) {
+        error = true;
+    }
+
+    return error;
+}
+
+
