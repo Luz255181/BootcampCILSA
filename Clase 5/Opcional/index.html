@@ -12,42 +12,48 @@
 <body id="cuerpo" class="bg-danger my-3 d-flex justify-content-center align-items-center text-dark">
     <div class="container position-relative">
         <div class="row">
-            <div id="titulo" class="col-4 rounded-4 bg-white text-center border border-5 border-black py-5 mx-auto">
+            <div id="titulo"
+                class="col-6 col-md-4 rounded-4 bg-white text-center border border-5 border-black py-5 mx-auto">
                 <h1 class="fw-bold"> Datos Personales</h1>
             </div>
         </div>
         <div class="row mt-5">
-            <div id="formulario" class="col-6 rounded-4 bg-white text-center border border-5 border-black py-4 mx-auto">
+            <div id="formulario"
+                class="col-8 col-md-6 rounded-4 bg-white text-center border border-5 border-black py-4 mx-auto">
                 <div class="form-group">
-                    <label for="name" class="fw-bold">Nombre</label>
+                    <label for="nameinput" class="fw-bold">Nombre</label>
                     <input type="text" class="form-control" id="nameinput" placeholder="Ingrese su Nombre">
                 </div>
                 <div class="form-group mt-3">
-                    <label for="lastname" class="fw-bold">Apellido</label>
+                    <label for="lastnameinput" class="fw-bold">Apellido</label>
                     <input type="text" class="form-control" id="lastnameinput" placeholder="Ingrese su Apellido">
                 </div>
                 <div class="form-group mt-3">
-                    <label for="email" class="fw-bold">Email</label>
+                    <label for="emailinput" class="fw-bold">Email</label>
                     <input type="email" class="form-control" id="emailinput" placeholder="Ingrese el Email">
                 </div>
                 <div class="form-group mt-3">
-                    <label for="birthday" class="fw-bold">Fecha de Nacimiento</label>
+                    <label for="birthdayinput" class="fw-bold">Fecha de Nacimiento</label>
                     <input type="date" class="form-control" id="birthdayinput"
                         placeholder="Ingrese su fecha de nacimiento">
                 </div>
                 <div class="form-group mt-3">
-                    <label for="country" class="fw-bold">País</label>
+                    <label for="countryinput" class="fw-bold">País</label>
                     <input type="text" class="form-control" id="countryinput" placeholder="Ingrese su País">
                 </div>
                 <button id="enviar" type="button" class="btn btn-danger mt-5"
                     onclick="mostrarNotificacion()">Enviar</button>
             </div>
         </div>
-        <div class="position-absolute bottom-0 end-0 p-3">
-            <button id="contraste" type="button" class="btn btn-outline-light me-2" onclick="modoContraste()">Alto
-                Contraste</button>
-            <button id="claro" type="button" class="btn btn-outline-light" onclick="modoClaro()" disabled>Modo
-                Claro</button>
+        <div class="row mt-3 justify-content-center">
+            <div class="col-auto">
+                <button id="contraste" type="button" class="btn btn-outline-light me-2" onclick="modoContraste()">Alto
+                    Contraste</button>
+            </div>
+            <div class="col-auto">
+                <button id="claro" type="button" class="btn btn-outline-light" onclick="modoClaro()" disabled>Modo
+                    Claro</button>
+            </div>
         </div>
         <div id="notificacion"
             class="position-fixed bottom-0 start-0 p-3 mb-3 bg-white text-dark rounded visually-hidden shadow-lg"
@@ -55,8 +61,8 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-        </script>
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
     <script src="actions.js"></script>
 </body>
 

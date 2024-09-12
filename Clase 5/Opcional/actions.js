@@ -7,6 +7,8 @@ const claroBtn = document.getElementById('claro');
 const notificacion = document.getElementById('notificacion');
 let modoclaro = true;
 
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 function modoClaro() {
     body.classList.add('bg-danger', 'text-dark');
     body.classList.remove('bg-dark', 'text-light');
@@ -44,7 +46,7 @@ function mostrarNotificacion() {
     const country = document.getElementById('countryinput').value;
     const notificacion = document.getElementById('notificacion');
 
-    let error = validarCampo(name) || validarCampo(lastname) || validarCampo(country) || validarEmail(email) || validarFecha(birthdate)
+    let error = validarCampo(name) || validarCampo(lastname) || validarCampo(country) || validarEmail(email) || validarFecha(birthdate);
 
     if (!error) {
         notificacion.innerText = `Formulario enviado correctamente.\n Nombre: ${name},\n Apellido: ${lastname},\n Email: ${email},\n Fecha de Nacimiento: ${birthdate},\n País: ${country}.`;
@@ -62,19 +64,7 @@ function mostrarNotificacion() {
 }
 
 function validarCampo(data) {
-    let error = false;
-    if (data) {
-        if (/^\s*$/.test(data)) {
-            error = true;
-        } else {
-            if (!(/^[a-zA-Z]+$/.test(data))) {
-                error = true;
-            }
-        }
-    } else {
-        error = true;
-    }
-    return error;
+    return !data || /^\s*$/.test(data) || !/^[a-zA-Z\s]+$/.test(data);
 }
 
 function validarEmail(email) {
@@ -82,24 +72,9 @@ function validarEmail(email) {
 }
 
 function validarFecha(fecha) {
-    let error = false;
-
     const fechaRegex = /^\d{4}-\d{2}-\d{2}$/;
-    if (!fechaRegex.test(fecha)) {
-        error = true;
-    }
+    if (!fechaRegex.test(fecha)) return true;
 
     const fechaObjeto = new Date(fecha);
-
-    if (isNaN(fechaObjeto.getTime())) {
-        error = true;
-    }
-
-    const [year, month, day] = fecha.split("-");
-    if (fechaObjeto.getUTCFullYear() != year || (fechaObjeto.getUTCMonth() + 1) != month || fechaObjeto.getUTCDate() != day) {
-        error = true;
-    }
-
-    return error;
+    return isNaN(fechaObjeto.getTime()) || fechaObjeto.toISOString().split('T')[0] !== fecha;
 }
-
