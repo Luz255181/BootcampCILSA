@@ -37,7 +37,6 @@ function modoContraste() {
     modoclaro = false;
 }
 
-// Función para mostrar la notificación
 function mostrarNotificacion() {
     const name = document.getElementById('nameinput').value;
     const lastname = document.getElementById('lastnameinput').value;
