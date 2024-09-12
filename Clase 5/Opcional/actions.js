@@ -44,8 +44,9 @@ function mostrarNotificacion() {
     const country = document.getElementById('countryinput').value;
     const notificacion = document.getElementById('notificacion');
 
-    // Validación básica de los campos
-    if (name && lastname && email && birthdate && country) {
+    let error = validarCampo(name) || validarCampo(lastname) || validarCampo(country) || validarEmail(email) || validarFecha(birthdate)
+
+    if (!error) {
         notificacion.innerText = `Formulario enviado correctamente.\n Nombre: ${name},\n Apellido: ${lastname},\n Email: ${email},\n Fecha de Nacimiento: ${birthdate},\n País: ${country}.`;
         notificacion.classList.remove('visually-hidden');
         notificacion.classList.add('bg-white', 'text-dark');
@@ -55,9 +56,50 @@ function mostrarNotificacion() {
         notificacion.classList.add('bg-white', 'text-dark');
     }
 
-    // Ocultar la notificación después de 3 segundos
     setTimeout(() => {
         notificacion.classList.add('visually-hidden');
     }, 10000);
+}
+
+function validarCampo(data) {
+    let error = false;
+    if (data) {
+        if (/^\s*$/.test(data)) {
+            error = true;
+        } else {
+            if (!(/^[a-zA-Z]+$/.test(data))) {
+                error = true;
+            }
+        }
+    } else {
+        error = true;
+    }
+    return error;
+}
+
+function validarEmail(email) {
+    return !emailRegex.test(email);
+}
+
+function validarFecha(fecha) {
+    let error = false;
+
+    const fechaRegex = /^\d{4}-\d{2}-\d{2}$/;
+    if (!fechaRegex.test(fecha)) {
+        error = true;
+    }
+
+    const fechaObjeto = new Date(fecha);
+
+    if (isNaN(fechaObjeto.getTime())) {
+        error = true;
+    }
+
+    const [year, month, day] = fecha.split("-");
+    if (fechaObjeto.getUTCFullYear() != year || (fechaObjeto.getUTCMonth() + 1) != month || fechaObjeto.getUTCDate() != day) {
+        error = true;
+    }
+
+    return error;
 }
 
