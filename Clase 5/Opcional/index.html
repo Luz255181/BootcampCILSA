@@ -39,7 +39,8 @@
                     <label for="country" class="fw-bold">País</label>
                     <input type="text" class="form-control" id="countryinput" placeholder="Ingrese su País">
                 </div>
-                <button id="enviar" type="button" class="btn btn-danger mt-5">Enviar</button>
+                <button id="enviar" type="button" class="btn btn-danger mt-5"
+                    onclick="mostrarNotificacion()">Enviar</button>
             </div>
         </div>
         <div class="position-absolute bottom-0 end-0 p-3">
@@ -47,6 +48,10 @@
                 Contraste</button>
             <button id="claro" type="button" class="btn btn-outline-light" onclick="modoClaro()" disabled>Modo
                 Claro</button>
+        </div>
+        <div id="notificacion"
+            class="position-fixed bottom-0 start-0 p-3 mb-3 bg-white text-dark rounded visually-hidden shadow-lg"
+            role="alert" aria-live="assertive">
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
